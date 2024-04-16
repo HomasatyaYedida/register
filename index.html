@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+    crossorigin="anonymous"
+  />
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <script>
+    
+    const phoneInputField = document.querySelector("#phone");
+    const phoneInput = window.intlTelInput(phoneInputField, {
+        utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+        initialCountry: "in", // Set the default country to India
+    });
+
+    function validateNumber(input) {
+        // Remove non-numeric characters
+        input.value = input.value.replace(/\D/g, '');
+
+        // Limit the length to 10 digits
+        if (input.value.length > 10) {
+            input.value = input.value.slice(0, 10);
+        }
+    }
+    function validateNumber1(input) {
+        // Remove non-numeric characters
+        input.value = input.value.replace(/\D/g, '');
+
+        // Limit the length to 10 digits
+        if (input.value.length > 12) {
+            input.value = input.value.slice(0, 10);
+        }
+    }
+    function validateNumber2(input) {
+        // Remove non-numeric characters
+        input.value = input.value.replace(/\D/g, '');
+
+        // Limit the length to 10 digits
+        if (input.value.length > 6) {
+            input.value = input.value.slice(0, 10);
+        }
+    }
+
+</script>
+
+
+  <style>
+    form {
+      width: 400px;
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+    input {
+      width: 100%;
+    }
+    div {
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <form class="form p-5" onsubmit="formdata(event)">
+      <h1 style="text-align: center; margin-bottom: 10px">Register</h1>
+
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname" value="" />
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname" value="" />
+      
+      <label for="number">Phone number:</label>
+      <input id="phone" type="tel" name="phone" oninput="validateNumber(this)" placeholder="e.g., +91 1234567890" />
+
+      
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" value="" />
+
+      <button style="color: beige" class="btn btn-info mt-3">Submit</button>
+    </form>
+  </div>
+
+  <script>
+
+    let a = []
+    function formdata(event) {
+      event.preventDefault();
+
+      let b={}
+
+    b.fname = document.getElementById("fname").value;
+    b.lname = document.getElementById("lname").value;
+    b.number = document.getElementById("phone").value;
+    b.location = document.getElementById("location").value;
+        a.push(b)
+
+        clear();
+    }
+
+    console.log(a);
+  </script>
+ </body>
+</html>
+ 
